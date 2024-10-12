@@ -1,3 +1,4 @@
+package creational_patterns.abstract_factory_method;
 interface Furniture {
     void hasLegs();
     void sitOn();
@@ -116,7 +117,7 @@ class FactoryProducer {
     }
 }
 
-public class abstrtShopMethod {
+public class abstractShopMethod {
     public static void main(String[] args) {
         // get furniture factory
         AbstractFactory furnitureFactory = FactoryProducer.getFactory("FURNITURE");

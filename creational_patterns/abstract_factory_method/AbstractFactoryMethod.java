@@ -1,8 +1,13 @@
-package creational_pattern.factory_method;
+package creational_patterns.abstract_factory_method;
 
-interface Shape{
+interface  Color {
+    void Colors();
+}
+
+interface Shape {
     void Area();
 }
+
 
 class Circle implements Shape{
 
@@ -51,9 +56,30 @@ class Rectangle implements Shape{
 
 }
 
+class Red implements Color{
+   
+    public void Colors(){
+        System.out.println("Red");
+    }
+}
 
-class Factorymethod{
+class Yellow implements Color{
+   
+    public void Colors(){
+        System.out.println("Yellow");
+    }
+}
 
+
+class Blue implements Color{
+   
+    public void Colors(){
+        System.out.println("Blue");
+    }
+}
+
+
+class AbFactroyMethodShape{
 
     private int radius,no;
     private double base,height,width;
@@ -78,11 +104,14 @@ class Factorymethod{
         this.height=height;
     }
 
+
     public Shape getShape(String shapname){
+
+        
 
         if(shapname.equalsIgnoreCase("Circle")){
             return new Circle(radius);
-        }
+        }  
         else if(shapname.equalsIgnoreCase("triangle")){
             return new Triangle(base,height);
         }
@@ -92,24 +121,61 @@ class Factorymethod{
         else{
             return null;
         }
+
     }
 }
 
-public class AreaOfShape {
+
+class  AbFactroyMethodColor {
+
+    public Color getColor(String color){
+        if(color.equalsIgnoreCase("red")){
+            return new Red();
+        }
+        else if(color.equalsIgnoreCase("Yellow")){
+            return new Yellow();
+        }
+        else if(color.equalsIgnoreCase("blue")){
+            return new Blue();
+        }
+        else{
+            return null;
+        }
+    }
+    
+}
+
+
+public class AbstractFactoryMethod {
+
+    static final  String shapecolortag = "Shape Color : ";
     public static void main(String[] args) {
-        Factorymethod factorymethod = new Factorymethod();
-        factorymethod.shapePara(10);
-        Shape circle = factorymethod.getShape("circle");
+        AbFactroyMethodShape factorymethodShape = new AbFactroyMethodShape();
+        AbFactroyMethodColor abFactroyMethodColor = new AbFactroyMethodColor();
+
+
+        Color red = abFactroyMethodColor.getColor("Red");
+        System.out.print(shapecolortag);red.Colors();
+
+        factorymethodShape.shapePara(10);
+        Shape circle = factorymethodShape.getShape("circle");
         circle.Area();
+        System.out.println();
+       
 
-        factorymethod.shapePara(10, 20);
-        Shape triangle = factorymethod.getShape("triangle");
+        Color yellow = abFactroyMethodColor.getColor("yellow");
+        System.out.print(shapecolortag);yellow.Colors();
+        factorymethodShape.shapePara(10, 20);
+        Shape triangle = factorymethodShape.getShape("triangle");
         triangle.Area();
+        System.out.println();
 
-        factorymethod.shapePara(10, 20,1);
-        Shape rectangle = factorymethod.getShape("rectangle");
+
+        Color blue = abFactroyMethodColor.getColor("blue");
+        System.out.print(shapecolortag);blue.Colors();
+        factorymethodShape.shapePara(10, 20,1);
+        Shape rectangle = factorymethodShape.getShape("rectangle");
         rectangle.Area();
 
-
-    }    
+    }
 }
