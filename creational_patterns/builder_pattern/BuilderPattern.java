@@ -3,8 +3,8 @@ package creational_patterns.builder_pattern;
 class House {
 
     private String walls;
-    private String roof;
     private String doors;
+    private String roof;
 
     public void setWalls(String walls) {
         this.walls = walls;
