@@ -1,2 +1,0 @@
-The Simple Factory Method is a creational design pattern that provides a way to create objects without specifying the exact class of the object that will be created. 
-It typically involves a single method that returns different types of objects based on input parameters.

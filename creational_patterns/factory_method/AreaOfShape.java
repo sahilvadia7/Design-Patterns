@@ -1,4 +1,4 @@
-package creational_patterns.factory_method;
+
 
 interface Shape{
     void Area();
